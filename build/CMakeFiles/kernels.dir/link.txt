@@ -1,0 +1,2 @@
+/usr/bin/ar qc libkernels.a CMakeFiles/kernels.dir/src/kernels/elementwise.cu.o
+/usr/bin/ranlib libkernels.a

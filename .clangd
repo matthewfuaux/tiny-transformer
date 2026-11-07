@@ -1,0 +1,32 @@
+# clangd (editor LSP) configuration. Affects editor diagnostics and
+# completion only; the real build still uses nvcc via CMake.
+CompileFlags:
+  CompilationDatabase: build
+  # CMake writes nvcc-only flags that clang doesn't understand.
+  Remove:
+    - -forward-unknown-to-host-compiler
+    - --generate-code*
+    - -lineinfo
+    - --options-file
+    - -Xcompiler*
+    - -arch*
+    - --use_fast_math
+  Add:
+    - --cuda-path=/usr/local/cuda
+    # CUDA 13 moved its C++ library headers (CCCL) into include/cccl. nvcc
+    # finds them automatically; clang doesn't, and without them its CUDA
+    # setup fails silently and breaks std::vector and friends.
+    - -isystem/usr/local/cuda/include/cccl
+    # Editor-only GPU target. clang's CUDA support may lag behind the newest
+    # GPUs, so use an older arch it definitely knows; the code is the same.
+    - --cuda-gpu-arch=sm_90
+    # Check the file as the CPU-side compile sees it. Kernel bodies are still
+    # checked; this avoids a false error on the <<< >>> launch syntax.
+    - --cuda-host-only
+    # clang may not recognise the newest CUDA toolkit version; it still works.
+    - -Wno-unknown-cuda-version
+    # Don't look for the GPU math library; not needed for editor checks.
+    - -nocudalib
+Diagnostics:
+  Suppress:
+    - drv_unknown_argument
