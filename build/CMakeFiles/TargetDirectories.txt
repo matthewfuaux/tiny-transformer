@@ -1,7 +1,0 @@
-/home/matt/code/personal/tiny-transformer/tiny-transformer/build/CMakeFiles/kernels.dir
-/home/matt/code/personal/tiny-transformer/tiny-transformer/build/CMakeFiles/device_info.dir
-/home/matt/code/personal/tiny-transformer/tiny-transformer/build/CMakeFiles/test_elementwise.dir
-/home/matt/code/personal/tiny-transformer/tiny-transformer/build/CMakeFiles/test_softmax.dir
-/home/matt/code/personal/tiny-transformer/tiny-transformer/build/CMakeFiles/test.dir
-/home/matt/code/personal/tiny-transformer/tiny-transformer/build/CMakeFiles/edit_cache.dir
-/home/matt/code/personal/tiny-transformer/tiny-transformer/build/CMakeFiles/rebuild_cache.dir
