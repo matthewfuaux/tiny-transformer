@@ -1,3 +1,4 @@
+#include "kernels/reduce.cuh"
 #include "kernels/softmax.cuh"
 
 #include "cuda_utils.cuh"
@@ -13,36 +14,14 @@ __global__ void softmax_kernel(float *out, const float *in, int cols) {
     local_max = fmaxf(local_max, row_in[j]);
   }
 
-  smem[threadIdx.x] = local_max;
-  __syncthreads();
-
-  for (int stride = blockDim.x / 2; stride > 0; stride /= 2) {
-    if (threadIdx.x < stride) {
-      smem[threadIdx.x] = fmaxf(smem[threadIdx.x], smem[threadIdx.x + stride]);
-    }
-    __syncthreads();
-  }
-
-  float row_max = smem[0];
-  __syncthreads();
+  float row_max = block_reduce_max(local_max, smem);
 
   float local_sum = 0.0f;
   for (int j = threadIdx.x; j < cols; j += blockDim.x) {
     local_sum += expf(row_in[j] - row_max);
   }
 
-  smem[threadIdx.x] = local_sum;
-  __syncthreads();
-
-  for (int stride = blockDim.x / 2; stride > 0; stride /= 2) {
-    if (threadIdx.x < stride) {
-      smem[threadIdx.x] += smem[threadIdx.x + stride];
-    }
-    __syncthreads();
-  }
-
-  float row_sum = smem[0];
-  __syncthreads();
+  float row_sum = block_reduce_sum(local_sum, smem);
 
   for (int j = threadIdx.x; j < cols; j += blockDim.x) {
     row_out[j] = expf(row_in[j] - row_max) / row_sum;

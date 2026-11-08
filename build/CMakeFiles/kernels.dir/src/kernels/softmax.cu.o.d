@@ -194,6 +194,7 @@ CMakeFiles/kernels.dir/src/kernels/softmax.cu.o : /home/matt/code/personal/tiny-
     /usr/include/c++/13/utility \
     /usr/include/c++/13/bits/stl_relops.h \
     /usr/include/c++/13/initializer_list \
+    /home/matt/code/personal/tiny-transformer/tiny-transformer/src/kernels/reduce.cuh \
     /home/matt/code/personal/tiny-transformer/tiny-transformer/src/kernels/softmax.cuh \
     /home/matt/code/personal/tiny-transformer/tiny-transformer/src/cuda_utils.cuh \
     /usr/include/c++/13/cstddef \
