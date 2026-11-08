@@ -1,0 +1,16 @@
+build/
+build-*/
+
+.cache/
+
+*.ncu-rep
+*.nsys-rep
+
+data/
+*.bin
+
+__pycache__/
+.venv/
+
+*.swp
+.DS_Store
