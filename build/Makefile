@@ -165,6 +165,19 @@ test_elementwise/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_elementwise.dir/build.make CMakeFiles/test_elementwise.dir/build
 .PHONY : test_elementwise/fast
 
+#=============================================================================
+# Target rules for targets named test_softmax
+
+# Build rule for target.
+test_softmax: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_softmax
+.PHONY : test_softmax
+
+# fast build rule for target.
+test_softmax/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_softmax.dir/build.make CMakeFiles/test_softmax.dir/build
+.PHONY : test_softmax/fast
+
 src/kernels/elementwise.o: src/kernels/elementwise.cu.o
 .PHONY : src/kernels/elementwise.o
 
@@ -189,6 +202,30 @@ src/kernels/elementwise.cu.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/kernels.dir/build.make CMakeFiles/kernels.dir/src/kernels/elementwise.cu.s
 .PHONY : src/kernels/elementwise.cu.s
 
+src/kernels/softmax.o: src/kernels/softmax.cu.o
+.PHONY : src/kernels/softmax.o
+
+# target to build an object file
+src/kernels/softmax.cu.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kernels.dir/build.make CMakeFiles/kernels.dir/src/kernels/softmax.cu.o
+.PHONY : src/kernels/softmax.cu.o
+
+src/kernels/softmax.i: src/kernels/softmax.cu.i
+.PHONY : src/kernels/softmax.i
+
+# target to preprocess a source file
+src/kernels/softmax.cu.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kernels.dir/build.make CMakeFiles/kernels.dir/src/kernels/softmax.cu.i
+.PHONY : src/kernels/softmax.cu.i
+
+src/kernels/softmax.s: src/kernels/softmax.cu.s
+.PHONY : src/kernels/softmax.s
+
+# target to generate assembly for a file
+src/kernels/softmax.cu.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/kernels.dir/build.make CMakeFiles/kernels.dir/src/kernels/softmax.cu.s
+.PHONY : src/kernels/softmax.cu.s
+
 tests/test_elementwise.o: tests/test_elementwise.cu.o
 .PHONY : tests/test_elementwise.o
 
@@ -212,6 +249,30 @@ tests/test_elementwise.s: tests/test_elementwise.cu.s
 tests/test_elementwise.cu.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_elementwise.dir/build.make CMakeFiles/test_elementwise.dir/tests/test_elementwise.cu.s
 .PHONY : tests/test_elementwise.cu.s
+
+tests/test_softmax.o: tests/test_softmax.cu.o
+.PHONY : tests/test_softmax.o
+
+# target to build an object file
+tests/test_softmax.cu.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_softmax.dir/build.make CMakeFiles/test_softmax.dir/tests/test_softmax.cu.o
+.PHONY : tests/test_softmax.cu.o
+
+tests/test_softmax.i: tests/test_softmax.cu.i
+.PHONY : tests/test_softmax.i
+
+# target to preprocess a source file
+tests/test_softmax.cu.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_softmax.dir/build.make CMakeFiles/test_softmax.dir/tests/test_softmax.cu.i
+.PHONY : tests/test_softmax.cu.i
+
+tests/test_softmax.s: tests/test_softmax.cu.s
+.PHONY : tests/test_softmax.s
+
+# target to generate assembly for a file
+tests/test_softmax.cu.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_softmax.dir/build.make CMakeFiles/test_softmax.dir/tests/test_softmax.cu.s
+.PHONY : tests/test_softmax.cu.s
 
 tools/device_info.o: tools/device_info.cu.o
 .PHONY : tools/device_info.o
@@ -249,12 +310,19 @@ help:
 	@echo "... device_info"
 	@echo "... kernels"
 	@echo "... test_elementwise"
+	@echo "... test_softmax"
 	@echo "... src/kernels/elementwise.o"
 	@echo "... src/kernels/elementwise.i"
 	@echo "... src/kernels/elementwise.s"
+	@echo "... src/kernels/softmax.o"
+	@echo "... src/kernels/softmax.i"
+	@echo "... src/kernels/softmax.s"
 	@echo "... tests/test_elementwise.o"
 	@echo "... tests/test_elementwise.i"
 	@echo "... tests/test_elementwise.s"
+	@echo "... tests/test_softmax.o"
+	@echo "... tests/test_softmax.i"
+	@echo "... tests/test_softmax.s"
 	@echo "... tools/device_info.o"
 	@echo "... tools/device_info.i"
 	@echo "... tools/device_info.s"

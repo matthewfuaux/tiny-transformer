@@ -138,4 +138,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/kernels.dir/DependInfo.cmake"
   "CMakeFiles/device_info.dir/DependInfo.cmake"
   "CMakeFiles/test_elementwise.dir/DependInfo.cmake"
+  "CMakeFiles/test_softmax.dir/DependInfo.cmake"
   )

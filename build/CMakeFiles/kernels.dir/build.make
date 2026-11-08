@@ -83,17 +83,33 @@ CMakeFiles/kernels.dir/src/kernels/elementwise.cu.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CUDA source to assembly CMakeFiles/kernels.dir/src/kernels/elementwise.cu.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_ASSEMBLY_SOURCE
 
+CMakeFiles/kernels.dir/src/kernels/softmax.cu.o: CMakeFiles/kernels.dir/flags.make
+CMakeFiles/kernels.dir/src/kernels/softmax.cu.o: /home/matt/code/personal/tiny-transformer/tiny-transformer/src/kernels/softmax.cu
+CMakeFiles/kernels.dir/src/kernels/softmax.cu.o: CMakeFiles/kernels.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/matt/code/personal/tiny-transformer/tiny-transformer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CUDA object CMakeFiles/kernels.dir/src/kernels/softmax.cu.o"
+	/usr/local/cuda/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/kernels.dir/src/kernels/softmax.cu.o -MF CMakeFiles/kernels.dir/src/kernels/softmax.cu.o.d -x cu -c /home/matt/code/personal/tiny-transformer/tiny-transformer/src/kernels/softmax.cu -o CMakeFiles/kernels.dir/src/kernels/softmax.cu.o
+
+CMakeFiles/kernels.dir/src/kernels/softmax.cu.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CUDA source to CMakeFiles/kernels.dir/src/kernels/softmax.cu.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/kernels.dir/src/kernels/softmax.cu.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CUDA source to assembly CMakeFiles/kernels.dir/src/kernels/softmax.cu.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_ASSEMBLY_SOURCE
+
 # Object files for target kernels
 kernels_OBJECTS = \
-"CMakeFiles/kernels.dir/src/kernels/elementwise.cu.o"
+"CMakeFiles/kernels.dir/src/kernels/elementwise.cu.o" \
+"CMakeFiles/kernels.dir/src/kernels/softmax.cu.o"
 
 # External object files for target kernels
 kernels_EXTERNAL_OBJECTS =
 
 libkernels.a: CMakeFiles/kernels.dir/src/kernels/elementwise.cu.o
+libkernels.a: CMakeFiles/kernels.dir/src/kernels/softmax.cu.o
 libkernels.a: CMakeFiles/kernels.dir/build.make
 libkernels.a: CMakeFiles/kernels.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/matt/code/personal/tiny-transformer/tiny-transformer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CUDA static library libkernels.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/matt/code/personal/tiny-transformer/tiny-transformer/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CUDA static library libkernels.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/kernels.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/kernels.dir/link.txt --verbose=$(VERBOSE)
 

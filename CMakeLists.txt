@@ -27,6 +27,7 @@ option(SYNC_AFTER_KERNEL "Synchronize after every kernel launch" OFF)
 # ---- Kernel library: every kernel we write goes in here ---------------------
 add_library(kernels STATIC
   src/kernels/elementwise.cu
+  src/kernels/softmax.cu
 )
 target_include_directories(kernels PUBLIC src)
 # -lineinfo maps GPU instructions back to source lines in Nsight Compute.
@@ -49,3 +50,4 @@ function(add_kernel_test name)
 endfunction()
 
 add_kernel_test(test_elementwise)
+add_kernel_test(test_softmax)

@@ -27,7 +27,7 @@ Pick one environment:
 cmake -S . -B build
 cmake --build build -j
 
-./build/device_info                     # 1. sanity check: should list your 5090
+./build/device_info
 ./build/test_elementwise                # 2. first kernel test + benchmark
 ctest --test-dir build --output-on-failure   # runs every test
 ```
