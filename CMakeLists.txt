@@ -1,7 +1,5 @@
 cmake_minimum_required(VERSION 3.24)
 
-# RTX 5090 is Blackwell, compute capability 12.0 -> "sm_120".
-# Needs CUDA Toolkit 12.8 or newer. Override with -DCMAKE_CUDA_ARCHITECTURES=...
 if(NOT DEFINED CMAKE_CUDA_ARCHITECTURES)
   set(CMAKE_CUDA_ARCHITECTURES 120)
 endif()
@@ -19,15 +17,13 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
   set(CMAKE_BUILD_TYPE Release)
 endif()
 
-# When ON, every kernel launch is followed by cudaDeviceSynchronize(), so a
-# crash inside a kernel is reported at the launch that caused it instead of at
-# some later, unrelated CUDA call. Slow, but invaluable while debugging.
 option(SYNC_AFTER_KERNEL "Synchronize after every kernel launch" OFF)
 
-# ---- Kernel library: every kernel we write goes in here ---------------------
 add_library(kernels STATIC
   src/kernels/elementwise.cu
   src/kernels/softmax.cu
+  src/kernels/layernorm.cu
+  src/kernels/embedding.cu
 )
 target_include_directories(kernels PUBLIC src)
 # -lineinfo maps GPU instructions back to source lines in Nsight Compute.
@@ -36,11 +32,9 @@ if(SYNC_AFTER_KERNEL)
   target_compile_definitions(kernels PUBLIC SYNC_AFTER_KERNEL)
 endif()
 
-# ---- Tools -------------------------------------------------------------------
 add_executable(device_info tools/device_info.cu)
 target_include_directories(device_info PRIVATE src)
 
-# ---- Tests (run all with: ctest --test-dir build --output-on-failure) -------
 enable_testing()
 
 function(add_kernel_test name)
@@ -51,3 +45,5 @@ endfunction()
 
 add_kernel_test(test_elementwise)
 add_kernel_test(test_softmax)
+add_kernel_test(test_layernorm)
+add_kernel_test(test_embedding)

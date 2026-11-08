@@ -1,5 +1,3 @@
-// Tests for elementwise kernels: each GPU result is compared against a
-// simple CPU reference, over sizes chosen to catch boundary bugs.
 #include <cmath>
 #include <cstdio>
 #include <vector>
